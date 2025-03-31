@@ -9,8 +9,14 @@ TV_SHOW_DIR="/mnt/usb/TV Shows/Phineas and Ferb"
 # Magnet link
 MAGNET_LINK="magnet:?xt=urn:btih:7FE80EC7CBB8D3A182DDBB745DB51DBD176104F7&dn=Phineas%20and%20Ferb%20(2007)%20Season%201-4%20S01-S04%20Extras%20(1080p%20WEB-DL%20&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fpublic.popcorn-tracker.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce"
 
+# Kill existing transmission-cli processes
+killall transmission-cli
+wait
 # Download the torrent
+echo "Starting download with transmission-cli..."
 sudo transmission-cli -w "$DOWNLOAD_DIR" "$MAGNET_LINK"
+
+echo "Download completed, beginning conversions"
 
 # Function to convert and rename files
 convert_and_rename() {
